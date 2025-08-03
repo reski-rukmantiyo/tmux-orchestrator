@@ -54,24 +54,56 @@ Start frontend and backend on Phase 1 immediately. Start Auth on Phase 2 kickoff
 
 ## Execution
 
-1. Navigate to your target directory.
-2. Clone the repo:
+1. Navigate to your source directory.
+
+2. Generate Prompt.md 
+
+```
+git clone https://github.com/reski-rukmantiyo/claude-tmux-prompt-gen
+cd claude-tmux-prompt-gen
+chmod +x generate_claude.sh
+./generate_claude.sh
+cd ..
+```
+
+3. Clone the repo:
 
 ```
 git clone https://github.com/reski-rukmantiyo/tmux-orchestrator
+cd tmux-orchestrator
+chmod +x schedule_with_note.sh
+chmod +x send-claude-message.sh
 ```
 
-3. Start the tmux
+4. Start the tmux
 
 ```
 tmux new-session -s [name-of-agent]
 ```
 
 
-4. Run Claude Code
+5. Run Claude Code
 
 ```
 claude --dangerously-skip-permissions
 ```
 
 please note: this command is to run Claude Code action without stopping for your approval 
+
+6. Test for schedule and test message
+
+```
+You are an AI orchestrator. First, let's test that everything works:
+
+1. Check what tmux window you're in:
+   Run: tmux display-message -p "#{session_name}:#{window_index}"
+
+2. Test the scheduling script:
+   Run: ./schedule_with_note.sh 1 "Test message"
+
+3. If that works, tell me "Setup successful!"
+
+Then I'll give you a project to work on.
+```
+
+7. Open prompt.md from specs directory then copy paste into Claude
