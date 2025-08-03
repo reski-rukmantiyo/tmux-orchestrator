@@ -32,7 +32,7 @@ SUCCESS CRITERIA:
 - Emails trigger
 ```
 
-## Prompt
+## Creating Prompt for Agent
 
 Create prompt.md that is designed to create agent armies based on your requirement
 
