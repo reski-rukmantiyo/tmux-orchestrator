@@ -2,7 +2,7 @@
 
 ## Prequistes
 
-@./commands.md
+Please read and obey commands.md file
 
 ## Project Overview
 The Tmux Orchestrator is an AI-powered session management system where Claude acts as the orchestrator for multiple Claude agents across tmux sessions, managing codebases and keeping development moving forward 24/7.
