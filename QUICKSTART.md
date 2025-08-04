@@ -117,6 +117,7 @@ Sometimes, you need to start again your tmux. Here are what you should do
 2. Start the tmux
 
 ```
+cd tmux-orchestrator
 tmux new-session -s [name-of-agent]
 ```
 
