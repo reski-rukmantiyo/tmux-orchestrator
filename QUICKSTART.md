@@ -73,6 +73,8 @@ git clone https://github.com/reski-rukmantiyo/tmux-orchestrator
 cd tmux-orchestrator
 chmod +x schedule_with_note.sh
 chmod +x send-claude-message.sh
+chmod +x commands_replacer.sh
+./commands_replacer.sh
 ```
 
 4. Start the tmux
