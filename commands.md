@@ -54,18 +54,18 @@ Follow this systematic sequence to start any project:
 
 #### 1. Find the Project
 ```bash
-# List all directories in /home/reski/Github/retro-photo-2 to find projects
-ls -la /home/reski/Github/retro-photo-2/ | grep "^d" | awk '{print $NF}' | grep -v "^\."
+# List all directories in ~/Coding to find projects
+ls -la ~/Coding/ | grep "^d" | awk '{print $NF}' | grep -v "^\."
 
 # If project name is ambiguous, list matches
-ls -la /home/reski/Github/retro-photo-2/ | grep -i "task"  # for "task templates"
+ls -la ~/Coding/ | grep -i "task"  # for "task templates"
 ```
 
 #### 2. Create Tmux Session
 ```bash
 # Create session with project name (use hyphens for spaces)
 PROJECT_NAME="task-templates"  # or whatever the folder is called
-PROJECT_PATH="/home/reski/Github/retro-photo-2/$PROJECT_NAME"
+PROJECT_PATH="/Users/jasonedward/Coding/$PROJECT_NAME"
 tmux new-session -d -s $PROJECT_NAME -c "$PROJECT_PATH"
 ```
 
@@ -161,16 +161,16 @@ tmux capture-pane -t $PROJECT_NAME:2 -p | grep -i error
 ### Example: Starting "Task Templates" Project
 ```bash
 # 1. Find project
-ls -la /home/reski/Github/retro-photo-2/ | grep -i task
+ls -la ~/Coding/ | grep -i task
 # Found: task-templates
 
 # 2. Create session
-tmux new-session -d -s task-templates -c "/home/reski/Github/retro-photo-2/task-templates"
+tmux new-session -d -s task-templates -c "/Users/jasonedward/Coding/task-templates"
 
 # 3. Set up windows
 tmux rename-window -t task-templates:0 "Claude-Agent"
-tmux new-window -t task-templates -n "Shell" -c "/home/reski/Github/retro-photo-2/task-templates"
-tmux new-window -t task-templates -n "Dev-Server" -c "/home/reski/Github/retro-photo-2/task-templates"
+tmux new-window -t task-templates -n "Shell" -c "/Users/jasonedward/Coding/task-templates"
+tmux new-window -t task-templates -n "Dev-Server" -c "/Users/jasonedward/Coding/task-templates"
 
 # 4. Start Claude and brief
 tmux send-keys -t task-templates:0 "claude" Enter
@@ -291,10 +291,10 @@ Priority: HIGH/MED/LOW
 #### 1. Project Analysis
 ```bash
 # Find project
-ls -la /home/reski/Github/retro-photo-2/ | grep -i "[project-name]"
+ls -la ~/Coding/ | grep -i "[project-name]"
 
 # Analyze project type
-cd /home/reski/Github/retro-photo-2/[project-name]
+cd ~/Coding/[project-name]
 test -f package.json && echo "Node.js project"
 test -f requirements.txt && echo "Python project"
 ```
@@ -312,7 +312,7 @@ Create session and deploy all agents with specific briefings for their roles.
 ```bash
 # 1. Capture complete conversation
 tmux capture-pane -t [session]:[window] -S - -E - > \
-  /home/reski/Github/retro-photo-2/Tmux\ orchestrator/registry/logs/[session]_[role]_$(date +%Y%m%d_%H%M%S).log
+  ~/Coding/Tmux\ orchestrator/registry/logs/[session]_[role]_$(date +%Y%m%d_%H%M%S).log
 
 # 2. Create summary of work completed
 echo "=== Agent Summary ===" >> [logfile]
