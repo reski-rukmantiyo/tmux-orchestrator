@@ -107,3 +107,28 @@ Then I'll give you a project to work on.
 ```
 
 7. Open prompt.md from specs directory then copy paste into Claude
+
+## Restart
+
+Sometimes, you need to start again your tmux. Here are what you should do
+
+1. Navigate to your source directory.
+
+2. Start the tmux
+
+```
+tmux new-session -s [name-of-agent]
+```
+
+
+3. Run Claude Code
+
+```
+claude --dangerously-skip-permissions
+```
+
+4. Insert into your Claude Code
+
+```
+Read again @Claude.md also @LEARNINGS.md, wake all teams then report what's the current status
+```
