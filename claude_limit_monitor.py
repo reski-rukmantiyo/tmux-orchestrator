@@ -110,7 +110,7 @@ class ClaudeLimitMonitor:
         return any(indicator in content_lower for indicator in claude_indicators)
 
     def send_continue_to_all_sessions(self):
-        """Send '--continue' + Enter to all Claude sessions."""
+        """Send 'continue' + Enter to all Claude sessions."""
         sessions = self.get_all_sessions()
         continued_count = 0
 
@@ -124,14 +124,14 @@ class ClaudeLimitMonitor:
                 # Only send to windows that likely contain Claude
                 if self.is_claude_window(session_name, window_index):
                     try:
-                        # Send '--continue'
-                        subprocess.run(["tmux", "send-keys", "-t", f"{session_name}:{window_index}", "--continue"])
+                        # Send 'continue'
+                        subprocess.run(["tmux", "send-keys", "-t", f"{session_name}:{window_index}", "continue"])
                         time.sleep(0.5)
                         # Send Enter
                         subprocess.run(["tmux", "send-keys", "-t", f"{session_name}:{window_index}", "Enter"])
                         continued_count += 1
                         session_continued += 1
-                        print(f"✅ Sent '--continue' to {session_name}:{window_index}")
+                        print(f"✅ Sent 'continue' to {session_name}:{window_index}")
 
                         # Add a small delay between windows to avoid overwhelming
                         time.sleep(1.0)
@@ -144,7 +144,7 @@ class ClaudeLimitMonitor:
             if session_continued > 0:
                 print(f"📊 Session '{session_name}': {session_continued} Claude windows continued")
 
-        print(f"🚀 Total: Sent '--continue' to {continued_count} Claude windows across {len(sessions)} sessions")
+        print(f"🚀 Total: Sent 'continue' to {continued_count} Claude windows across {len(sessions)} sessions")
     
     def schedule_continuation(self, wait_minutes: int, reset_time_str: str):
         """Schedule continuation using the existing scheduling system."""
@@ -263,7 +263,7 @@ def main():
             print("")
             print("Arguments:")
             print("  check_interval    Seconds between checks (default: 30)")
-            print("  --continue-all    Send '--continue' to all Claude sessions")
+            print("  --continue-all    Send 'continue' to all Claude sessions")
             print("  --clear-lock      Clear scheduling lock file")
             print("")
             print("Examples:")
