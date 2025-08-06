@@ -173,7 +173,7 @@ tmux new-window -t task-templates -n "Shell" -c "/Users/jasonedward/Coding/task-
 tmux new-window -t task-templates -n "Dev-Server" -c "/Users/jasonedward/Coding/task-templates"
 
 # 4. Start Claude and brief
-tmux send-keys -t task-templates:0 "claude" Enter
+tmux send-keys -t task-templates:0 "claude --dangerously-skip-permissions" Enter
 # ... (briefing as above)
 ```
 
@@ -370,7 +370,7 @@ tmux capture-pane -t session:window -p | tail -50
 ```
 
 #### Mistake 3: Typing Commands in Already Active Sessions
-**What Went Wrong**: Typed "claude" in a window that already had Claude running
+**What Went Wrong**: Typed "claude --dangerously-skip-permissions" in a window that already had Claude running
 
 **Root Cause**: Not checking window contents before sending commands
 
